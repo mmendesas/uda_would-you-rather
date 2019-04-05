@@ -17,11 +17,56 @@ code {
   padding: 10px;
   max-width: 1000px;
   margin: 0 auto;
-  
   /* remove this line */
-  background-color: lightyellow; 
+  background-color: lightyellow;
 }
 
 .center {
   text-align: center;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.avatar {
+  height: 100px;
+  margin: 10px;
+}
+
+.user-score {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.divider {
+  height: 100px;
+  width: 2px;
+  background: lightgray;
+}
+
+.scoreTotal {
+  font-weight: bold;
+  font-size: 50px;
+  color: #1178c5;
+  font-family: sans-serif;
+}
+
+td:last-child {
+  font-weight: bold;
+  color: green;
 }

@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import UserScore from "./UserScore";
 class LeaderBoard extends Component {
   render() {
     return (
-      <div>
+      <div className="leaderboard">
         <h3 className="center">Leader Board!</h3>
-        <ul className="leaderboard-list">
+        <ul className="leaderboard__list">
           {this.props.userIds.map(id => (
             <li key={id}>
-              <div>UserId: {id}</div>
+              <UserScore id={id} />
             </li>
           ))}
         </ul>
