@@ -5,7 +5,7 @@ const authedUser = (state = null, action) => {
     case SET_AUTHED_USER:
       return action.id;
     default:
-      return action;
+      return state;
   }
 };
 
