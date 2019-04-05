@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
+import LeaderBoard from "./LeaderBoard";
 
 class App extends Component {
   componentWillMount() {
@@ -8,7 +9,11 @@ class App extends Component {
   }
 
   render() {
-    return <div className="container">Would you rather?</div>;
+    return (
+      <div className="container">
+        <LeaderBoard />
+      </div>
+    );
   }
 }
 
