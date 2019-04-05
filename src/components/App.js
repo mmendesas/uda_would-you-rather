@@ -11,10 +11,14 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <LeaderBoard />
+        {this.props.loading ? null : <LeaderBoard />}
       </div>
     );
   }
 }
+
+const mapStateToProps = ({ authedUser }) => ({
+  loading: authedUser === null
+});
 
 export default connect()(App);
