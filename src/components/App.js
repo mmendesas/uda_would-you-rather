@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import LeaderBoard from "./LeaderBoard";
 import Login from './Login'
+import Home from './Home'
 
 class App extends Component {
   componentWillMount() {
@@ -12,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        {this.props.loading ? null : <Login />}
+        {this.props.loading ? null : <Home />}
       </div>
     );
   }

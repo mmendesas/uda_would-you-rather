@@ -14,7 +14,7 @@ class UserScore extends Component {
     }
 
     return (
-      <div className="user-score">
+      <div className="user-info">
         <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar" />
         <div className="divider" />
         <div>
