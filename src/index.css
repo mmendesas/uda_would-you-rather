@@ -147,3 +147,20 @@ select {
   font-weight: 700;
   border-width: 2px;
 }
+
+.progress {
+  margin-bottom: 1em !important;
+}
+
+.progress-info {
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #e6e6e6;
+  width: 300px;
+}
+
+.active {
+  border: 2px solid green;
+  background-color: rgb(191, 245, 191);
+}
