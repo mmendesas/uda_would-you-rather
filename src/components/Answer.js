@@ -9,28 +9,15 @@ class Answer extends Component {
     return (
       <div className="user-info">
         <div className="answer-image">
+          <div>Who asks?</div>
           <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar" />
           <div>{name}</div>
         </div>
         <div className="divider" />
         <div className="answer-info">
           <h3 className="center">Would you rather...</h3>
-          <table>
-            <tbody>
-              <tr>
-                <td style={{ color: "green" }}>{optionOne}</td>
-              </tr>
-              <tr>
-                <td style={{ color: "blue" }}>{optionTwo}</td>
-              </tr>
-
-              {userAnswer && (
-                <tr>
-                  <td style={{ color: "purple" }}>Answer: {userAnswer}</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+          <p style={{ color: "green" }}>... {optionOne.substr(0,5)}...</p>
+          <button className="btn" >View Poll</button>
         </div>
       </div>
     );

@@ -123,3 +123,27 @@ select {
   text-align: center;
   font-weight: bold;
 }
+
+.btn {
+  margin: 5px auto;
+  padding: 10px;
+  border: 1px solid green;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #fff;
+  width: 250px;
+  position: relative;
+  color: green;
+}
+
+.btn:hover {
+  border-color: rgba(0, 100, 0, 0.5);
+  color: rgba(0, 100, 0, 0.5);
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: 0;
+  font-weight: 700;
+  border-width: 2px;
+}
