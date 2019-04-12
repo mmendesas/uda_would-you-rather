@@ -5,6 +5,7 @@ import LeaderBoard from "./LeaderBoard";
 import Login from './Login'
 import Home from './Home'
 import Question from './Question'
+import NewQuestion from './NewQuestion'
 
 class App extends Component {
   componentWillMount() {
@@ -14,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        {this.props.loading ? null : <Question id="6ni6ok3ym7mf1p33lnez" />}
+        {this.props.loading ? null : <NewQuestion />}
       </div>
     );
   }
