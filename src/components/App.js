@@ -20,18 +20,18 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <LoadingBar />          
-        <LoadingBar />
           <LoadingBar />
-          <Nav />          
+          <LoadingBar />
+          <LoadingBar />
+          <Nav />
           <div className="container">
             {this.props.loading ? null :
               <div>
                 <Route path="/" exact component={Home} />
-                <Route path="/add" component={NewQuestion} />            
+                <Route path="/add" component={NewQuestion} />
                 <Route path="/login" component={Login} />
                 <Route path="/leaderboard" component={LeaderBoard} />
-                <Route path="/question:id" component={Question} />
+                <Route path="/question/:id" component={Question} />
               </div>
             }
           </div>

@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom';
+
 import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestion extends Component {
 
     state = {
         optionOne: '',
-        optionTwo: ''
+        optionTwo: '',
+        toHome: false
     }
 
     handleChange = e => {
@@ -26,12 +29,17 @@ class NewQuestion extends Component {
 
         this.setState(() => ({
             optionOne: '',
-            optionTwo: ''
+            optionTwo: '',
+            toHome: true
         }))
     }
 
     render() {
-        const { optionOne, optionTwo } = this.state;
+        const { optionOne, optionTwo, toHome } = this.state;
+
+        if (toHome) {
+            return <Redirect to="/" />
+        }
 
         return (
             <div className="new-question">
