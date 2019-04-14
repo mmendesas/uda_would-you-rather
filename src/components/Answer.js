@@ -16,7 +16,7 @@ class Answer extends Component {
         <div className="divider" />
         <div className="answer-info">
           <h3 className="center">Would you rather...</h3>
-          <p style={{ color: "green" }}>... {optionOne.substr(0,5)}...</p>
+          <p style={{ color: "teal" }}>... {optionOne.substr(0,5)}...</p>
           <button className="btn" >View Poll</button>
         </div>
       </div>

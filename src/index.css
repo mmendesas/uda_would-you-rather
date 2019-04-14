@@ -18,7 +18,7 @@ code {
   max-width: 1000px;
   margin: 0 auto;
   /* remove this line */
-  background-color: lightyellow;
+  /* background-color: lightsteelblue */
 }
 
 .center {
@@ -39,6 +39,15 @@ li {
   height: 100px;
   margin: 10px;
 }
+.avatar-menu {
+  height: 40px;
+}
+
+.loggedUser {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+}
 
 .user-info {
   width: 100%;
@@ -51,6 +60,7 @@ li {
   border: 1px solid #dad7d7;
   border-radius: 30px;
   cursor: pointer;
+  box-shadow: 5px 5px 20px teal;
 }
 
 .divider {
@@ -64,48 +74,39 @@ li {
   font-size: 50px;
   color: #1178c5;
   font-family: sans-serif;
+  padding: 10px;
 }
 
 td:last-child {
   font-weight: bold;
-  color: green;
+  color: teal;
 }
 
 .login-box {
   margin: 50px auto;
   width: 400px;
   padding: 40px;
-  background-color: #e8f3f7;
   text-align: center;
   border-radius: 50px;
-  box-shadow: 5px 5px 20px #000;
+  box-shadow: 3px 3px 20px teal;
 }
 
 .login-box input,
 select {
   display: block;
   margin: 20px auto;
-  /* border: 1px solid black; */
   width: 100%;
   padding: 5px;
   background-color: white;
   text-transform: uppercase;
-  box-shadow: 5px 5px 20px #000;
 }
 
 .login-box input {
   color: white;
-  background-color: #1178c5;
+  background-color: teal;
   border: none;
   border-radius: 10px;
   font-weight: bold;
-}
-
-.login-image {
-  margin-top: 10px;
-  width: 200px;
-  border-radius: 30px;
-  box-shadow: 5px 5px 20px #000;
 }
 
 .tab {
@@ -127,25 +128,56 @@ select {
 .btn {
   margin: 5px auto;
   padding: 10px;
-  border: 1px solid green;
+  border: 1px solid teal;
   border-radius: 10px;
   cursor: pointer;
   background: #fff;
   width: 250px;
   position: relative;
-  color: green;
+  color: teal;
 }
 
 .btn:hover {
-  border-color: rgba(0, 100, 0, 0.5);
-  color: rgba(0, 100, 0, 0.5);
   text-decoration: none;
+  font-weight: bold;
+  transform: scale(1.05);
 }
 
 .btn:focus {
   outline: 0;
   font-weight: 700;
   border-width: 2px;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.nav {
+  margin: 10px;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.nav ul li {
+  padding: 10px;
+  text-align: center;
+  align-self: center;
+}
+
+.nav ul li a {
+  color: teal;
+  font-size: 18px;
+}
+
+.nav ul .right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
 .progress {
@@ -160,15 +192,9 @@ select {
   width: 300px;
 }
 
-.active {
-  border: 2px solid green;
-  background-color: rgb(191, 245, 191);
-}
-
 .new-question {
   margin: 0 auto;
   width: 500px;
-  border: 2px solid teal;
   border-radius: 30px;
   padding: 30px;
   box-shadow: 3px 3px 20px teal;

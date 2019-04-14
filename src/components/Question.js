@@ -24,7 +24,7 @@ class Question extends Component {
                     <h3 className="center">Results</h3>
                     <section className={`progress-info ${userAnswer === optionOne.text ? 'active' : ''}`}>
                         <h4>{optionOne.text}</h4>
-                        <Progress percent={votesOne} progress color='green' className="progress" />
+                        <Progress percent={votesOne} progress color='teal' className="progress" />
                         <p>{optionOne.votes.length} of {allVotes} votes</p>
                     </section>
 

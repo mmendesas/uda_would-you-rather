@@ -6,7 +6,6 @@ class LeaderBoard extends Component {
   render() {
     return (
       <div className="leaderboard">
-        <h3 className="center">Leader Board!</h3>
         <ul className="leaderboard__list">
           {this.props.userIds.map(id => (
             <li key={id}>
