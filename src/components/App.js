@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
+import LoadingBar from 'react-redux-loading';
 import LeaderBoard from "./LeaderBoard";
 import Login from './Login'
 import Home from './Home'
@@ -14,9 +15,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        {this.props.loading ? null : <NewQuestion />}
-      </div>
+      <Fragment>
+        <LoadingBar />
+        <div className="container">
+          {this.props.loading ? null : <NewQuestion />}
+        </div>
+      </Fragment>
     );
   }
 }
