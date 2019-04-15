@@ -199,3 +199,14 @@ select {
   padding: 30px;
   box-shadow: 3px 3px 20px teal;
 }
+
+.userVote {
+  border: 3px solid teal;
+}
+
+#circle {
+  width: 10px;
+  height: 10px;
+  background: teal;
+  border-radius: 50%;
+}

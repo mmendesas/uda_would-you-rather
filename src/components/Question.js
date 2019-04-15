@@ -13,6 +13,9 @@ class Question extends Component {
         const votesOne = (optionOne.votes.length * 100) / allVotes;
         const votesTwo = (optionTwo.votes.length * 100) / allVotes;
 
+        const voteOptionOne = userAnswer === optionOne.text
+        const voteOptionTwo = userAnswer === optionTwo.text
+
         return (
             <div className="user-info">
                 <div className="answer-image">
@@ -22,13 +25,14 @@ class Question extends Component {
                 </div>
                 <div className="answer-info">
                     <h3 className="center">Results</h3>
-                    <section className={`progress-info ${userAnswer === optionOne.text ? 'active' : ''}`}>
+                    <section className={`progress-info ${voteOptionOne ? 'userVote' : ''}`}>
+                        {voteOptionOne && <div id="circle"></div>}
                         <h4>{optionOne.text}</h4>
                         <Progress percent={votesOne} progress color='teal' className="progress" />
                         <p>{optionOne.votes.length} of {allVotes} votes</p>
                     </section>
-
-                    <section className={`progress-info ${userAnswer === optionTwo.text ? 'active' : ''}`}>
+                    <section className={`progress-info ${voteOptionTwo ? 'userVote' : ''}`}>
+                        {voteOptionTwo && <div id="circle"></div>}
                         <h4>{optionTwo.text}</h4>
                         <Progress percent={votesTwo} progress color='blue' className="progress" />
                         <p>{optionTwo.votes.length} of {allVotes} votes</p>
@@ -39,7 +43,8 @@ class Question extends Component {
     }
 }
 
-const mapStateToProps = ({ questions, users, authedUser }, { id }) => {
+const mapStateToProps = ({ questions, users, authedUser }, props) => {
+    const { id } = props.match.params;
     const question = questions[id];
     const { optionOne, optionTwo } = question;
     const answerOne = optionOne.votes.includes(authedUser) ? optionOne.text : null;
