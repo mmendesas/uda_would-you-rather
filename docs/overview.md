@@ -3,10 +3,10 @@
 <!--  login page -->
  The person using your application should have a way of impersonating/logging in as an existing user. (This could be as simple as having a login box that appears at the root of the application that lets the user select a name from the list of existing users. Alternatively, you could create your own account creation process to allow a user to sign up for an account.) Your application should work correctly regardless of which user is selected. 
  
- <!-- login to > home -->
+ <!-- login to > home OK -->
  Once the user logs in, the home page should be shown.
 
-<!-- navbar with authedUser -->
+<!-- navbar with authedUser OK -->
 We always want to make sure we know who the logged in user is, so information about the logged in user should appear on the page.
 
 <!-- routing -->
