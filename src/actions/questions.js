@@ -1,8 +1,9 @@
-import { saveQuestion } from '../utils/api'
+import { saveQuestion, saveQuestionAnswer } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
+export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS"
 export const ADD_QUESTION = "ADD_QUESTION"
+export const ANSWER_QUESTION = "ANSWER_QUESTION"
 
 // action creators
 export function receiveQuestions(questions) {
@@ -10,6 +11,13 @@ export function receiveQuestions(questions) {
     type: RECEIVE_QUESTIONS,
     questions
   };
+}
+
+function answerQuestion(answer) {
+  return {
+    type: ANSWER_QUESTION,
+    answer
+  }
 }
 
 function addQuestion(question) {
@@ -33,5 +41,19 @@ export function handleAddQuestion(textOne, textTwo) {
     })
       .then((question) => dispatch(addQuestion(question)))
       .then(() => dispatch(hideLoading()))
+  }
+}
+
+export function handleAnwserQuestion(qid, answer) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+
+    console.log('grosa', qid, answer)
+
+    return saveQuestionAnswer({
+      authedUser,
+      qid,
+      answer
+    }).then(() => console.log( 'myanser', answer))
   }
 }

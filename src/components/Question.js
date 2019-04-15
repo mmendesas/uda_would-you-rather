@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Progress } from 'semantic-ui-react'
 import NotFound from './NotFound'
+import AnswerForm from './AnswerForm';
 
 class Question extends Component {
-
     render() {
         const { user, question, userAnswer } = this.props;
         const { avatarURL, name } = user;
+
         if (!question) {
             return <NotFound />
         }
@@ -19,6 +20,7 @@ class Question extends Component {
 
         const voteOptionOne = userAnswer === optionOne.text
         const voteOptionTwo = userAnswer === optionTwo.text
+        const hasVote = voteOptionOne || voteOptionTwo
 
         return (
             <div className="user-info">
@@ -28,19 +30,29 @@ class Question extends Component {
                     <div>{name}</div>
                 </div>
                 <div className="answer-info">
-                    <h3 className="center">Results</h3>
-                    <section className={`progress-info ${voteOptionOne ? 'userVote' : ''}`}>
-                        {voteOptionOne && <div id="circle"></div>}
-                        <h4>{optionOne.text}</h4>
-                        <Progress percent={votesOne} progress color='teal' className="progress" />
-                        <p>{optionOne.votes.length} of {allVotes} votes</p>
-                    </section>
-                    <section className={`progress-info ${voteOptionTwo ? 'userVote' : ''}`}>
-                        {voteOptionTwo && <div id="circle"></div>}
-                        <h4>{optionTwo.text}</h4>
-                        <Progress percent={votesTwo} progress color='blue' className="progress" />
-                        <p>{optionTwo.votes.length} of {allVotes} votes</p>
-                    </section>
+                    {!hasVote && (
+                        <AnswerForm
+                            textOne={optionOne.text}
+                            textTwo={optionTwo.text}
+                            id={question.id} />
+                    )}
+                    {hasVote && (
+                        <section>
+                            <h3 className="center">Results</h3>
+                            <section className={`progress-info ${voteOptionOne ? 'userVote' : ''}`}>
+                                {voteOptionOne && <div id="circle"></div>}
+                                <h4>{optionOne.text}</h4>
+                                <Progress percent={votesOne} progress color='teal' className="progress" />
+                                <p>{optionOne.votes.length} of {allVotes} votes</p>
+                            </section>
+                            <section className={`progress-info ${voteOptionTwo ? 'userVote' : ''}`}>
+                                {voteOptionTwo && <div id="circle"></div>}
+                                <h4>{optionTwo.text}</h4>
+                                <Progress percent={votesTwo} progress color='blue' className="progress" />
+                                <p>{optionTwo.votes.length} of {allVotes} votes</p>
+                            </section>
+                        </section>
+                    )}
                 </div>
             </div>
         );
