@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleSetAuthedUser } from "../actions/authedUser";
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -14,6 +15,7 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.dispatch(handleSetAuthedUser(this.state.value));
+    this.props.history.push('/')
   };
 
   render() {
@@ -45,4 +47,4 @@ const mapStateToProps = ({ users, authedUser }) => ({
   authedUser
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(withRouter(Login));
