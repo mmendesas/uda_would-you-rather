@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Progress } from 'semantic-ui-react'
+import NotFound from './NotFound'
 
 class Question extends Component {
 
     render() {
         const { user, question, userAnswer } = this.props;
         const { avatarURL, name } = user;
-        const { optionOne, optionTwo } = question;
+        if (!question) {
+            return <NotFound />
+        }
 
+        const { optionOne, optionTwo } = question;
         const allVotes = [optionOne.votes, optionTwo.votes].length;
         const votesOne = (optionOne.votes.length * 100) / allVotes;
         const votesTwo = (optionTwo.votes.length * 100) / allVotes;
@@ -46,14 +50,20 @@ class Question extends Component {
 const mapStateToProps = ({ questions, users, authedUser }, props) => {
     const { id } = props.match.params;
     const question = questions[id];
-    const { optionOne, optionTwo } = question;
-    const answerOne = optionOne.votes.includes(authedUser) ? optionOne.text : null;
-    const answerTwo = optionTwo.votes.includes(authedUser) ? optionTwo.text : null;
-    const userAnswer = answerOne || answerTwo;
+    let userAnswer = '';
+    let user = '';
+
+    if (question) {
+        const { optionOne, optionTwo } = question;
+        const answerOne = optionOne.votes.includes(authedUser) ? optionOne.text : null;
+        const answerTwo = optionTwo.votes.includes(authedUser) ? optionTwo.text : null;
+        user = users[questions[id].author]
+        userAnswer = answerOne || answerTwo;
+    }
 
     return {
         question,
-        user: users[questions[id].author],
+        user,
         userAnswer
     }
 }

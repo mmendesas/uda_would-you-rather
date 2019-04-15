@@ -9,7 +9,7 @@
 <!-- navbar with authedUser OK -->
 We always want to make sure we know who the logged in user is, so information about the logged in user should appear on the page.
 
-<!-- routing -->
+<!-- routing  OK -->
 If someone tries to navigate anywhere by entering the address in the address bar, the user is asked to sign in and then the requested page is shown. The application allows the user to log out and log back in.
 
 <!-- home page - pools -->
