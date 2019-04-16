@@ -21,10 +21,17 @@ const questions = (state = {}, action) => {
       }
 
     case ANSWER_QUESTION:
-      const { answer } = action
-      console.log('answer', answer)
+      const { answer, questionId, authedUser } = action.payload
+
       return {
-        state
+        ...state,
+        [questionId]: {
+          ...state[questionId],
+          [answer]: {
+            ...state[questionId][answer],
+            votes: state[questionId][answer].votes.concat([authedUser])
+          }
+        }
       }
 
     default:

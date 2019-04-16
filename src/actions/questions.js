@@ -13,10 +13,14 @@ export function receiveQuestions(questions) {
   };
 }
 
-function answerQuestion(answer) {
+function answerQuestion({ answer, questionId, authedUser }) {
   return {
     type: ANSWER_QUESTION,
-    answer
+    payload: {
+      answer,
+      questionId,
+      authedUser
+    }
   }
 }
 
@@ -47,13 +51,12 @@ export function handleAddQuestion(textOne, textTwo) {
 export function handleAnwserQuestion(qid, answer) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
-
-    console.log('grosa', qid, answer)
-
+    dispatch(showLoading())
     return saveQuestionAnswer({
       authedUser,
       qid,
       answer
-    }).then(() => console.log( 'myanser', answer))
+    }).then(() => dispatch(answerQuestion({ answer, questionId: qid, authedUser })))
+      .then(() => dispatch(hideLoading()))
   }
 }
