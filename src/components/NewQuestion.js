@@ -23,9 +23,9 @@ class NewQuestion extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const { optionOne, optionTwo } = this.state
-        const { dispatch } = this.props;
+        const { handleAddQuestion } = this.props;
 
-        dispatch(handleAddQuestion(optionOne, optionTwo))
+        handleAddQuestion(optionOne, optionTwo)
 
         this.setState(() => ({
             optionOne: '',
@@ -76,4 +76,10 @@ class NewQuestion extends Component {
     }
 }
 
-export default connect()(NewQuestion)
+const mapDispatchToProps = dispatch => {
+    return {
+        handleAddQuestion: (one, two) => dispatch(handleAddQuestion(one, two))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(NewQuestion)
