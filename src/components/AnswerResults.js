@@ -12,7 +12,7 @@ const AnswerOption = ({ userHasVoted, option, votes, allVotes, color }) => (
 
 const AnswerResults = ({ optionOne, optionTwo, userAnswer }) => {
 
-    const allVotes = [optionOne.votes, optionTwo.votes].length;
+    const allVotes = [...optionOne.votes, ...optionTwo.votes].length;
     const votesOne = (optionOne.votes.length * 100) / allVotes;
     const votesTwo = (optionTwo.votes.length * 100) / allVotes;
 

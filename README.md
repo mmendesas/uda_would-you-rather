@@ -13,6 +13,12 @@ An app that lets you play the famous **'would you rather?'** game.
 
 In the project directory, you can run:
 
+Installing with:
+```sh
+yarn
+```
+
+Start in development mode:
 ```sh
 yarn start
 ```
