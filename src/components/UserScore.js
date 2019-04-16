@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 const UserScore = ({ user }) => {
-  const { id, name, avatarURL, answers, questions } = user;
+  const { name, avatarURL, answers, questions } = user;
 
   const numAnswers = Object.keys(answers).length;
   const numQuestions = questions.length;

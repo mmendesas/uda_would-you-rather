@@ -13,7 +13,7 @@ const Nav = ({ user }) => {
                 </li>
                 <li>
                     <NavLink to="/add" activeClassName="active">
-                        New Tweet
+                        New Question
                     </NavLink>
                 </li>
                 <li>
