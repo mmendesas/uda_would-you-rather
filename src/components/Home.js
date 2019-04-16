@@ -4,6 +4,7 @@ import { Tab } from "semantic-ui-react";
 
 import Answer from "./Answer";
 
+const NoItems = () => <div className="center">No items to show!</div>
 class Home extends Component {
   render() {
     const { unansweredIds, answeredIds } = this.props;
@@ -17,6 +18,7 @@ class Home extends Component {
               menuItem: "Unanswered",
               render: () => (
                 <Tab.Pane>
+                  {unansweredIds.length === 0 && <NoItems />}
                   <ul>
                     {unansweredIds.map(id => (
                       <li key={id}>
