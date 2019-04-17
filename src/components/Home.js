@@ -56,14 +56,20 @@ class Home extends Component {
 }
 
 const mapStateToProps = ({ questions, authedUser }) => {
-  const answeredIds = Object.keys(questions).filter(
-    key =>
-      questions[key].optionOne.votes.includes(authedUser) ||
-      questions[key].optionTwo.votes.includes(authedUser)
-  );
-  const unansweredIds = Object.keys(questions).filter(
-    key => !answeredIds.includes(key)
-  );
+  const answeredIds = Object.keys(questions)
+    .filter(
+      key =>
+        questions[key].optionOne.votes.includes(authedUser) ||
+        questions[key].optionTwo.votes.includes(authedUser)
+    )
+    .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+
+  const unansweredIds = Object.keys(questions)
+    .filter(
+      key => !answeredIds.includes(key)
+    )
+    .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+
   return { answeredIds, unansweredIds, authedUser };
 };
 
