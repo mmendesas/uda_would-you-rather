@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { handleSetAuthedUser } from '../actions/authedUser'
 
-const Nav = ({ user }) => {
+const Nav = ({ user, handleSetAuthedUser }) => {
+
+    const handleLogout = () => {
+        handleSetAuthedUser('')
+    }
+
     return (
         <nav className="nav">
             <ul>
@@ -23,15 +29,16 @@ const Nav = ({ user }) => {
                 </li>
                 <li className="right">
                     {user && (
-                        <div className="loggedUser">
-                            <img src={user.avatarURL} alt={`Avatar of ${user.name}`} className="avatar-menu" />
-                            <span>{user.name}</span>
-                        </div>
+                        <Fragment>
+                            <div className="loggedUser">
+                                <img src={user.avatarURL} alt={`Avatar of ${user.name}`} className="avatar-menu" />
+                                <span>{user.name}</span>
+                            </div>
+                            <NavLink to="/login" activeClassName="active" onClick={handleLogout}>
+                                Logout
+                            </NavLink>
+                        </Fragment>
                     )}
-
-                    <NavLink to="/login" activeClassName="active">
-                        Logout
-                    </NavLink>
                 </li>
             </ul>
         </nav>
@@ -43,4 +50,10 @@ const mapStateToProps = ({ authedUser, users }) => {
     return { user }
 }
 
-export default connect(mapStateToProps)(Nav)
+const mapDispatchToProps = dispatch => {
+    return {
+        handleSetAuthedUser: (user) => dispatch(handleSetAuthedUser(user))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

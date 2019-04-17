@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Tab } from "semantic-ui-react";
+import { Redirect } from 'react-router-dom'
 
 import Answer from "./Answer";
 
 const NoItems = () => <div className="center">No items to show!</div>
 class Home extends Component {
   render() {
-    const { unansweredIds, answeredIds } = this.props;
+    const { unansweredIds, answeredIds, authedUser } = this.props;
+
+    if (authedUser === '') {
+      return <Redirect to='/login' />
+    }
 
     return (
       <div className="home">
@@ -59,7 +64,7 @@ const mapStateToProps = ({ questions, authedUser }) => {
   const unansweredIds = Object.keys(questions).filter(
     key => !answeredIds.includes(key)
   );
-  return { answeredIds, unansweredIds };
+  return { answeredIds, unansweredIds, authedUser };
 };
 
 export default connect(mapStateToProps)(Home);
